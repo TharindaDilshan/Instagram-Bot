@@ -62,10 +62,27 @@ class Bot:
 
         return usernames
     
-    def bulk_liker(self):
-        return 0
+    def bulkLiker(self):
+        self.driver.find_element_by_xpath("//a[@href = '/explore/']").click()
+        sleep(4)
+        self.driver.find_element_by_xpath("//a[contains(@href,'/p/')]").click()
+        sleep(2)
+        self.driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/article/div[2]/section[1]/span[1]/button").click()
+        sleep(2)
+        for i in range(1000):
+            self.driver.find_element_by_xpath("/html/body/div[4]/div[1]/div/div/a[2]").click()
+            sleep(2)
+            self.driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/article/div[2]/section[1]/span[1]/button").click()
+            sleep(2)
+        
+
+
         
 
 # Username and password should be passed when creating an instancce of the class bot
-unfollowerBot = Bot('tharinda_dilshan97', '')
-unfollowerBot.getUnfollowers()
+
+# unfollowerBot = Bot('tharinda_dilshan97', '')
+# unfollowerBot.getUnfollowers()
+
+likerBot = Bot('tharinda_dilshan97', '')
+likerBot.bulkLiker()

@@ -6,6 +6,8 @@
 
 -Bulk liker 
 
+-Find users that follows you but you don't follow back(Fans)
+
 
 ### Install and upgrade pip
 >python -m pip install --upgrade pip

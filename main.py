@@ -75,6 +75,27 @@ class Bot:
             self.driver.find_element_by_xpath("/html/body/div[4]/div[2]/div/article/div[2]/section[1]/span[1]/button").click()
             sleep(2)
         
+    def bulkFollower(self):
+        return 0;
+
+    def getFans(self):
+        # Go to profile after logging in. Use xpath to find the username to click
+        self.driver.find_element_by_xpath("//a[contains(@href,'/{}')]".format(self.username)).click()
+        sleep(3)
+
+        # Open following popup
+        self.driver.find_element_by_xpath("//a[contains(@href,'/following')]").click()
+        sleep(2)
+        following = self._generateNameList()
+
+        # Open followers popup
+        self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]").click()
+        sleep(2)
+        followers = self._generateNameList()
+
+        # Get the list of people who follow you but you do not follow by comparing following and followers lists
+        fans = [user for user in followers if user not in following]
+        print(fans)
 
 
         
@@ -84,5 +105,8 @@ class Bot:
 # unfollowerBot = Bot('tharinda_dilshan97', '')
 # unfollowerBot.getUnfollowers()
 
-likerBot = Bot('tharinda_dilshan97', '')
-likerBot.bulkLiker()
+# likerBot = Bot('tharinda_dilshan97', '')
+# likerBot.bulkLiker()
+
+fansBot = Bot('tharinda_dilshan97', '')
+fansBot.getFans()
